@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-class Moredogs extends React.Component {
+class MoreDogs extends React.Component {
   state = {
     src: ""
   };
@@ -29,4 +29,4 @@ class Moredogs extends React.Component {
   }
 }
 
-export default Moredogs;
+export default MoreDogs;
