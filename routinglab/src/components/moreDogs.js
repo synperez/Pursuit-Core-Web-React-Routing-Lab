@@ -1,14 +1,15 @@
 import React from "react";
 import axios from "axios";
+import Select from "./select"
 
 class MoreDogs extends React.Component {
   state = {
-    src: ""
+    src: "",
+    amount: "1"
   };
   getDogs = async () => {
-      let num = 5
     try {
-      let res = await axios.get(`https://dog.ceo/api/breeds/image/random/${num}`);
+      let res = await axios.get(`https://dog.ceo/api/breeds/image/random/${this.state.amount}`);
       debugger
       this.setState({
         src: res.data.message
@@ -18,11 +19,18 @@ class MoreDogs extends React.Component {
     }
   };
 
+  selectHandle = (e) => {
+    this.setState({amount: e.target.value})
+    debugger
+  }
+
+
   render() {
     const { src } = this.state;
     return (
       <div>
-        <select onChange={this.getDogs}>GET RANDOM DOGS</select>
+        <button onClick={this.getDogs}>GET RANDOM DOGS</button>
+        <Select selectHandle={this.selectHandle}/>
         <img src={src}></img>
       </div>
     );
